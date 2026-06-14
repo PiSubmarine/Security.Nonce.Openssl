@@ -4,11 +4,11 @@
 #include <cstdint>
 #include <vector>
 
-#include "PiSubmarine/Security/Nonce/Api/IProvider.h"
+#include "PiSubmarine/Security/Api/INonceProvider.h"
 
 namespace PiSubmarine::Security::Nonce::Openssl
 {
-    class Provider final : public Api::IProvider
+    class Provider final : public ::PiSubmarine::Security::Api::INonceProvider
     {
     public:
         struct Config
@@ -19,7 +19,7 @@ namespace PiSubmarine::Security::Nonce::Openssl
 
         explicit Provider(Config config = {});
 
-        [[nodiscard]] Error::Api::Result<Api::Nonce> Next() override;
+        [[nodiscard]] Error::Api::Result<::PiSubmarine::Security::Api::Nonce> Next() override;
 
     private:
         Config m_Config;

@@ -39,7 +39,7 @@ namespace PiSubmarine::Security::Nonce::Openssl
         }
     }
 
-    Error::Api::Result<Api::Nonce> Provider::Next()
+    Error::Api::Result<::PiSubmarine::Security::Api::Nonce> Provider::Next()
     {
         if (m_Exhausted)
         {
@@ -51,7 +51,7 @@ namespace PiSubmarine::Security::Nonce::Openssl
                 ? std::numeric_limits<std::uint64_t>::max()
                 : ((std::uint64_t{1} << (m_Config.CounterSize * 8U)) - 1U);
 
-        Api::Nonce nonce;
+        ::PiSubmarine::Security::Api::Nonce nonce;
         nonce.Value = m_Prefix;
         nonce.Value.resize(m_Config.PrefixSize + m_Config.CounterSize);
 
