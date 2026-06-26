@@ -17,7 +17,8 @@ namespace PiSubmarine::Security::Nonce::Openssl
             std::size_t CounterSize = sizeof(std::uint64_t);
         };
 
-        explicit Provider(Config config = {});
+        Provider();
+        explicit Provider(Config config);
 
         [[nodiscard]] Error::Api::Result<::PiSubmarine::Security::Api::Nonce> Next() override;
 

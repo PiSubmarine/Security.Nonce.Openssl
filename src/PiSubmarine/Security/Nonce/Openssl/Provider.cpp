@@ -18,6 +18,11 @@ namespace PiSubmarine::Security::Nonce::Openssl
         }
     }
 
+    Provider::Provider()
+        : Provider(Config{})
+    {
+    }
+
     Provider::Provider(Config config)
         : m_Config(config)
         , m_Prefix(config.PrefixSize)
